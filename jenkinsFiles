@@ -4,8 +4,8 @@ pipeline {
     stages {
         stage('Install Dependencies') {
             steps {
-                // Install dependencies using npm (assuming the project uses Node.js)
                 script {
+                    // Install dependencies using npm (assuming the project uses Node.js)
                     sh 'npm install'  // This installs the required dependencies
                 }
             }
@@ -13,8 +13,8 @@ pipeline {
 
         stage('Build') {
             steps {
-                // Run build commands (if necessary)
                 script {
+                    // Run build commands (if necessary)
                     sh 'npm run build'  // Replace with your actual build command
                 }
             }
@@ -22,8 +22,8 @@ pipeline {
 
         stage('Test') {
             steps {
-                // Run tests if they are defined
                 script {
+                    // Run tests if they are defined
                     sh 'npm test'  // Replace with your actual test command
                 }
             }
@@ -31,8 +31,8 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                // Deploy to a server or container, if needed
                 script {
+                    // Deploy to a server or container, if needed
                     echo 'Deploying to production...'  // Replace with your actual deploy command
                 }
             }
@@ -45,4 +45,12 @@ pipeline {
             echo 'Cleaning up...'
         }
 
-   
+        success {
+            echo 'Build succeeded!'
+        }
+
+        failure {
+            echo 'Build failed!'
+        }
+    }
+}
