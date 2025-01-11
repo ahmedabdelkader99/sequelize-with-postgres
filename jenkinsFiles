@@ -1,0 +1,48 @@
+pipeline {
+    agent any  // This defines where the pipeline will run (on any available agent)
+
+    stages {
+        stage('Install Dependencies') {
+            steps {
+                // Install dependencies using npm (assuming the project uses Node.js)
+                script {
+                    sh 'npm install'  // This installs the required dependencies
+                }
+            }
+        }
+
+        stage('Build') {
+            steps {
+                // Run build commands (if necessary)
+                script {
+                    sh 'npm run build'  // Replace with your actual build command
+                }
+            }
+        }
+
+        stage('Test') {
+            steps {
+                // Run tests if they are defined
+                script {
+                    sh 'npm test'  // Replace with your actual test command
+                }
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                // Deploy to a server or container, if needed
+                script {
+                    echo 'Deploying to production...'  // Replace with your actual deploy command
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            // This block will run after every build, regardless of success or failure
+            echo 'Cleaning up...'
+        }
+
+   
